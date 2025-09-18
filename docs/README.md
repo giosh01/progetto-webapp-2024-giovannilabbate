@@ -5,23 +5,44 @@ Applicazione web per la gestione del proprio allenamento in palestra. L'utente p
 ## Installazione ed esecuzione
 
 1. **Scarica o clona il progetto**
+
    Puoi clonare la repository Git oppure scaricare i file in locale.
 
+   ```bash
+   git clone <repository-url>
+   ```
+
 2. **Entra nella cartella principale del progetto**
+
    Apri il terminale e spostati nella directory che contiene i file:
+
+   ```bash
    cd /percorso-alla-tua-cartella
+   ```
 
 3. **Installa le dipendenze necessarie**
+
    L'applicazione richiede Node.js ed Express.js. Per installare i pacchetti:
+
+   ```bash
    npm install
+   ```
 
 4. **Avvia il server**
+
    Avvia l'applicazione con:
+
+   ```bash
    node backend/server.js
+   ```
 
 5. **Apri il browser e accedi**
+
    Il server sarà disponibile all'indirizzo:
+
+   ```
    http://localhost:3000
+   ```
 
 ## Rotte Statiche
 
