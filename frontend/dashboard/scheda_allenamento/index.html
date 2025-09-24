@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LiftLog - Scheda di allenamento</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+  <link rel="stylesheet" href="../../shared/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="/assets/img/logo.png" type="image/png"> <!-- icona scheda -->
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="menu">
+    <div class="container">
+      <a class="brand" href="../../home/index.html" >
+        <img src="../../assets/img/logo.png" alt="" class="icona-sito" />
+        <span class="brand-text">LIFTLOG</span>
+      </a>
+      <nav class="menu-nav">
+        <a href="../mesocicli/index.html">Dashboard</a>
+        <a href="#" id="login-pulsante">Accedi</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MODALE LOGIN, REGISTRATI, PROFILO -->
+  <div class="modal" id="auth-modal" >
+    <div class="modal-content">
+      <button class="modal-close" id="auth-close" >&times;</button>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Accedi</button>
+        <button class="tab" data-tab="signup">Registrati</button>
+        <button class="tab" data-tab="profile">Profilo</button>
+      </div>
+
+      <!-- LOGIN -->
+      <form id="form-login" class="panel active" data-panel="login">
+        <label for="login-username">Username</label>
+        <input id="login-username" name="username" type="text"
+               required minlength="3" maxlength="20"
+               title="3-20 caratteri"
+               autocomplete="username">
+
+        <label for="login-password">Password</label>
+        <input id="login-password" name="password" type="password"
+               required minlength="6" maxlength="30"
+               autocomplete="current-password">
+
+        <button type="submit" class="btn-primario">Entra</button>
+      </form>
+
+      <!-- REGISTRATI -->
+      <form id="form-signup" class="panel" data-panel="signup">
+        <label for="signup-username">Username</label>
+        <input id="signup-username" name="username" type="text"
+               required minlength="3" maxlength="20"
+               title="3-20 caratteri"
+               autocomplete="username">
+
+        <label for="signup-password">Password</label>
+        <input id="signup-password" name="password" type="password"
+               required minlength="6" maxlength="30"
+               autocomplete="new-password">
+
+        <label for="signup-confirm">Conferma password</label>
+        <input id="signup-confirm" name="confirm" type="password"
+               required minlength="6" maxlength="30"
+               autocomplete="new-password">
+
+        <button type="submit" class="btn-primario">Crea account</button>
+      </form>
+
+      <!-- PROFILO -->
+      <div id="panel-profile" class="panel" data-panel="profile">
+        <p style="margin:8px 0 14px">
+          Utente: <strong id="profile-username"></strong>
+        </p>
+        <div style="display:flex; gap:8px">
+          <button id="btn-logout" class="btn-primario" type="button">Logout</button>
+          <button id="btn-delete-account" class="btn-primario" type="button">Elimina account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container scheda-page">
+    <!-- Titolo microciclo + switch logbook -->
+    <div class="page-head">
+      <h1 id="titolo-micro">microciclo</h1>
+      <a id="to-logbook" class="ghost-btn" href="../logbook/index.html">Vai al Logbook ↗</a>
+    </div>
+
+    <!-- Top: split - parametri - grafico (tutti su una riga) -->
+<section class="top-grid">
+  <!-- Split -->
+  <div class="box">
+    <h3>Split</h3>
+    <div class="split-grid">
+      <label>Lun</label><input type="text" name="split-lun1" maxlength="40">
+      <label>Mar</label><input type="text" name="split-mar1" maxlength="40">
+      <label>Mer</label><input type="text" name="split-mer1" maxlength="40">
+      <label>Gio</label><input type="text" name="split-gio1" maxlength="40">
+      <label>Ven</label><input type="text" name="split-ven1" maxlength="40">
+      <label>Sab</label><input type="text" name="split-sab1" maxlength="40">
+      <label>Dom</label><input type="text" name="split-dom1" maxlength="40">
+
+      <label>Lun</label><input type="text" name="split-lun2" maxlength="40">
+      <label>Mar</label><input type="text" name="split-mar2" maxlength="40">
+      <label>Mer</label><input type="text" name="split-mer2" maxlength="40">
+      <label>Gio</label><input type="text" name="split-gio2" maxlength="40">
+      <label>Ven</label><input type="text" name="split-ven2" maxlength="40">
+      <label>Sab</label><input type="text" name="split-sab2" maxlength="40">
+      <label>Dom</label><input type="text" name="split-dom2" maxlength="40">
+    </div>
+  </div>
+
+  <!-- Parametri -->
+  <div class="box">
+    <h3>Parametri blocco</h3>
+    <div class="parametri-grid">
+      <label>Durata</label>
+      <input type="text" name="durata" maxlength="20"
+             title="Max 20 caratteri.">
+
+      <label>Densità</label>
+      <input type="text" name="densita" maxlength="20"
+             title="Max 20 caratteri.">
+
+      <label>Intensità di carico</label>
+      <input type="text" name="intensita_carico" maxlength="20"
+             title="Max 20 caratteri.">
+
+      <label>Intensità percepita</label>
+      <input type="text" name="intensita_perc" maxlength="20"
+             title="Max 20 caratteri.">
+
+      <label>Volume</label>
+      <input type="text" name="volume" maxlength="20"
+             title="Max 20 caratteri.">
+    </div>
+  </div>
+
+  <!-- Grafico -->
+  <div class="grafico-box">
+    <div class="chart-shell">
+      <div class="chart-head">
+        <p class="chart-title">Volume per gruppo muscolare</p>
+      </div>
+      <div class="chart-body">
+        <canvas id="gmChart" aria-label="Grafico volume per gruppo muscolare" role="img"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Sedute -->
+    <section id="sedute"></section>
+
+    <button id="add-seduta" class="btn-primario add-seduta">Aggiungi seduta</button>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><small>© 2025 | LiftLog</small></div>
+  </footer>
+
+  <script src="../../shared/auth.js" defer></script>
+  <script src="./script.js" defer></script>
+</body>
+</html>
