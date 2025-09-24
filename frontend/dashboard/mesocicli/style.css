@@ -1,0 +1,102 @@
+/* titolo pagina */
+.page-meso h1{
+  text-align:center;
+  margin:28px 0 24px;
+  font-size:24px;
+  font-weight:400;
+}
+
+/* griglia */
+.grid-meso{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap:28px;
+  padding:12px 0 60px;
+}
+
+/* card base */
+.card{
+  position:relative;
+  border-radius:14px;
+  padding:18px 18px 20px;
+  text-decoration:none;
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:128px;
+}
+
+/* card meso */
+.card.meso{
+  background: var(--verde);
+  color: var(--nero);
+  cursor:pointer;
+}
+.card.meso h3{ font-size:16px; margin:0 }
+.card.meso p{  font-size:14px; margin:0 }
+
+/* icona in alto a dx */
+.card.meso .icon img{
+  position:absolute;
+  top:10px; right:10px;
+  width:44px; height:44px;
+}
+
+/* card aggiungi */
+.add-card{
+  background: rgba(171,179,177,0.28);
+  color:var(--nero);
+  display:flex; align-items:center; justify-content:center;
+  border:none; cursor:pointer;
+}
+.add-card .plus{
+  width:56px; height:56px; border-radius:50%;
+  border:2px solid var(--verde);
+  display:flex; align-items:center; justify-content:center;
+  font-size:28px; line-height:1;
+  color:var(--verde);
+}
+
+/* tasto elimina in basso a destra */
+.card.meso .del{
+  position:absolute;
+  bottom:15px;
+  right:25px;
+  background:none;
+  border:none;
+  color:var(--nero);
+  font-size:14px;
+  cursor:pointer;
+  line-height:1;
+  padding:0;
+}
+.card.meso .del:hover{ color:darkred }
+
+/* tasto modifica in basso a sinistra */
+.card.meso .edit{
+  position:absolute;
+  left:16px;
+  bottom:15px;
+  background:none;
+  border:none;
+  color:var(--nero);
+  cursor:pointer;
+  padding:0;
+  line-height:1;
+  opacity:.9;
+}
+.card.meso .edit:hover{ opacity:1; }
+.card.meso .edit svg{ width:18px; height:18px; stroke-width:2; }
+
+/* modale */
+.modal .modal-content h2{ font-size:20px; margin-bottom:10px; font-weight:400 }
+
+/* footer */
+.site-footer{ margin-top:175px; }
+
+/* responsive */
+@media (max-width:600px){
+  .page-meso h1{ font-size:20px }
+  .grid-meso{ gap:20px }
+}
