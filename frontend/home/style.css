@@ -1,0 +1,203 @@
+.hero{
+  display:grid;
+  grid-template-columns: 1fr auto; 
+  column-gap:16px;
+  align-items:center;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 64px;
+  font-weight: 400;
+  margin: 0 0 12px;
+}
+
+.hero p{
+  color:var(--grigio);
+  width:100%;
+}
+
+.hero-immagine img{
+  width:300px;       /* o ciò che vuoi, es. 520px */
+  max-width:100%;
+  display:block;
+}
+
+.btn-primario_1 {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 7px 18px;
+  border-radius: 999px;
+  background: none; /* trasparente */
+  color: var(--verde);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 18px;
+  position: relative;
+  transition: color 0.25s ease;
+  border: 2px solid var(--verde); /* bordo sottile */
+}
+
+.btn-primario_1::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px; /* distanza dal testo */
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: var(--verde);
+  transition: width 0.3s ease;
+}
+
+.btn-primario_1:hover {
+  color: var(--verde);
+}
+
+.btn-primario_1:hover::after {
+  width: 60%; /* underline cresce al centro */
+}
+
+.funzionalita {
+  padding: 0px 20px 6px;
+}
+
+.funzionalita h2 {
+  text-align: center;
+  margin: 16px 0 28px;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 150px;
+  margin: 0 auto 32px auto;
+  max-width: 1100px; /* torna allineata al container */
+}
+
+.card {
+  background: var(--verde);
+  color: var(--nero);
+  border-radius: 18px;
+  padding: 18px; /* meno spazio interno */
+  min-height: 110px; /* altezza minima ridotta */
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 260px;
+}
+
+.card-icona img {
+  width: 55px;
+  height: 55px;
+}
+
+.card h3 {
+  margin: 6px 0 0;
+  font-size: 18px;
+  font-weight: 400; 
+}
+
+.howto {
+  padding: 24px 20px 60px;
+}
+
+.howto h2 {
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.passi {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  background: var(--verde);
+  color: var(--nero);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.passi li {
+  text-align: center;
+  padding: 10px 8px;
+}
+
+.numero {
+  display: inline-block; /* non più flex centrato */
+  background: none; /* niente sfondo */
+  color: var(--nero); /* numeri neri */
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.passi h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 6px 0 4px;
+}
+
+.passi p {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* <= 980px: 1 colonna di card centrata, hero a una colonna */
+@media (max-width: 980px){
+  .hero{
+    grid-template-columns: 1fr;
+  }
+  .hero-immagine{
+    order: 1;
+    display:flex;
+    justify-content:center;
+  }
+  .hero-immagine img{
+    width:80%;
+    max-width:450px;
+    transform:none;
+  }
+
+  /* card centrate */
+  .cards{
+    display:grid;
+    justify-content:center;        
+    gap:24px;
+    margin:0 0 32px 0;
+  }
+  .cards .card{
+    width:100%;
+    max-width:320px;
+    padding:16px 20px;
+    min-height:auto;
+    margin:0;
+  }
+
+  .cards .card-icona img{ width:40px; height:40px; }
+
+  .passi{ grid-template-columns: 1fr 1fr; }
+
+  .menu-nav{ gap:28px; }
+}
+
+/* <= 560px: card a tutta larghezza (no bordo sinistro “vuoto”) */
+@media (max-width: 560px){
+  .cards{
+    grid-template-columns: minmax(0, 1fr); /* prende tutta la riga */
+    padding: 0 16px;                        /* respiro ai lati */
+  }
+  .cards .card{
+    max-width:100%;
+  }
+}
