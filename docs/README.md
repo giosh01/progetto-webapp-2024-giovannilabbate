@@ -43,6 +43,9 @@ Applicazione web per la gestione del proprio allenamento in palestra. L'utente p
    ```
    http://localhost:3000
    ```
+## Credenziali utente demo
+**Username**: demo
+**Password**: 123123
 
 ## Rotte REST
 
